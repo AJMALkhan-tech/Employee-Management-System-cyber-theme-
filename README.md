@@ -79,30 +79,72 @@ Employee-Management-System-Cyber-Theme/
 ## 🎯 Project Objective
 
 This project was developed as part of the **CapregSoft Frontend Tasks** to demonstrate advanced JavaScript concepts, including CRUD operations, state management, localStorage, modular programming, and responsive UI development.
-📦 Installation
 
-Clone the repository:
+---
 
+## 📦 Installation
+
+### Clone the repository
+
+```bash
 git clone https://github.com/your-username/Employee-Management-System-Cyber-Theme.git
+```
 
-Navigate to the project directory:
+### Navigate to the project folder
 
+```bash
 cd Employee-Management-System-Cyber-Theme
-Open index.html in your preferred web browser.
-👨‍💻 Author
+```
 
-Muhammad Ajmal Khan
+### Run the project
 
-Cybersecurity Student
-Frontend Web Developer
-Technology Enthusiast
-📄 License
+Open the `index.html` file in your preferred web browser.
 
-This project is open-source and available for educational and personal use.
+---
 
-License
+## 📸 Screenshots
+
+Add screenshots or a GIF of your application here.
+
+Example:
+
+```
+screenshots/
+├── dashboard.png
+├── add-employee.png
+└── search.png
+```
+
+---
+
+## 🔮 Future Improvements
+
+* Dark/Light mode toggle
+* Employee profile images
+* Sorting and filtering options
+* Export employee data (CSV/PDF)
+* Pagination
+* Authentication system
+* Backend database integration
+* REST API support
+
+---
+
+## 👨‍💻 Author
+
+**Muhammad Ajmal Khan**
+
+* 🎓 Cybersecurity Student
+* 💻 Frontend Web Developer
+* 🚀 Technology Enthusiast
+
+---
+
+## 📄 License
+
 This project is open-source and available for educational and personal use.
 
 ---
 
-⭐ If you found this project useful, consider giving it a star on GitHub.
+⭐ If you found this project helpful, consider giving it a **Star** on GitHub!
+
