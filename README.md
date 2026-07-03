@@ -73,7 +73,8 @@ Employee-Management-System-Cyber-Theme/
 
 ## 📸 Preview
 
-You can add screenshots or a GIF of the dashboard here.
+<img width="944" height="428" alt="image" src="https://github.com/user-attachments/assets/8f5cdbeb-7826-4b46-9088-02d69cb13263" />
+
 
 ## 🎯 Project Objective
 
