@@ -101,22 +101,6 @@ cd Employee-Management-System-Cyber-Theme
 Open the `index.html` file in your preferred web browser.
 
 ---
-
-## 📸 Screenshots
-
-Add screenshots or a GIF of your application here.
-
-Example:
-
-```
-screenshots/
-├── dashboard.png
-├── add-employee.png
-└── search.png
-```
-
----
-
 ## 🔮 Future Improvements
 
 * Dark/Light mode toggle
