@@ -81,8 +81,12 @@ Employee-Management-System-Cyber-Theme/
 This project was developed as part of the **CapregSoft Frontend Tasks** to demonstrate advanced JavaScript concepts, including CRUD operations, state management, localStorage, modular programming, and responsive UI development.
 
 ## 👨‍💻 Author
+Muhammad Ajmal Khan
 
-**Ajmal**
+Cybersecurity Student | Web Developer | Technology Enthusiast
+
+License
+This project is open-source and available for educational and personal use.
 
 ---
 
