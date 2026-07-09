@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENTINEL // Employee Management System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+<!-- This section belong to top bar -->
+<div class="topbar">
+<div class="brand">
+<div class="brand-mark">S</div>
+<div>
+<h1>SENTINEL</h1>
+<p>Employee Access &amp; Records Control</p>
+</div>
+</div>
+<div class="status-cluster">
+<div class="status-item"><span class="dot"></span> SYSTEM ONLINE</div>
+<div class="status-item">SESSION: <span id="clock">--:--:--</span></div>
+<div class="status-item">OPERATOR: <span> admin@sentinel</span></div>
+</div>
+</div>
+<div class="stats">
+<div class="stat-card" style="--stat-accent:var(--green)">
+<div class="stat-label">Total Records</div>
+<div class="stat-value" id="statTotal">0</div>
+<div class="stat-sub">active employee entries</div>
+</div>
+<div class="stat-card" style="--stat-accent:var(--cyan)">
+<div class="stat-label">Departments</div>
+<div class="stat-value" id="statDepts">0</div>
+<div class="stat-sub">distinct units tracked</div>
+</div>
+<div class="stat-card" style="--stat-accent:var(--amber)">
+<div class="stat-label">Added Today</div>
+<div class="stat-value" id="statToday">0</div>
+<div class="stat-sub">new entries this session</div>
+</div>
+<div class="stat-card" style="--stat-accent:var(--red)">
+<div class="stat-label">Filtered View</div>
+<div class="stat-value" id="statFiltered">0</div>
+<div class="stat-sub">matching current query</div>
+</div>
+</div>
+<div class="maingrid">
+<!-- ---- this section belong to records panel ---- -->
+<div class="panel">
+<div class="panel-head">
+<div class="panel-title">Personnel Database</div>
+<button class="btn btn-primary" id="btnAdd">Add Employee</button>
+</div>
+<div class="panel-body">
+<div class="toolbar">
+<div class="search-wrap">
+<span>&#8981;</span>
+<input type="text" id="searchInput" placeholder="Search by name...">
+</div>
+<select id="deptFilter">
+<option value="">All Departments</option>
+</select>
+</div>
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Position</th>
+<th>Joined</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+</div>
+<div class="empty-state" id="emptyState" style="display:none;">
+<span class="glyph">&#9888;</span> 
+NO MATCHING RECORDS FOUND
+</div>
+</div>
+</div>
+<!-- this section belong to audit log that will tell what happened at that time -->
+<div class="panel">
+<div class="panel-head">
+<div class="panel-title">Audit Log</div>
+</div>
+<div class="panel-body">
+<div class="audit-feed" id="auditFeed"></div>
+</div>
+</div>
+</div>
+<footer class="foot">SENTINEL v1.0 &mdash; local storage instance &mdash; no external transmission</footer>
+</div>
+<!-- this section belong to add employee -->
+<div class="modal-overlay" id="modalOverlay">
+<div class="modal">
+<div class="modal-titlebar">
+<span id="modalTitle">ADD_RECORD.EXE</span>
+<button class="modal-close" id="modalClose">&#10005;</button>
+</div>
+<div class="modal-body">
+<form id="employeeForm" novalidate>
+<input type="hidden" id="empId">
+<div class="field" id="fieldName">
+<label for="empName">Full Name</label>
+<input type="text" id="empName" placeholder="e.g. Muhammad Ajmal Khan" autocomplete="off">
+<div class="err">Name is required.</div>
+</div>
+<div class="field" id="fieldEmail">
+<label for="empEmail">Email Address</label>
+<input type="text" id="empEmail" placeholder="e.g. ajmal.khan@company.com" autocomplete="off">
+<div class="err">Enter a valid, unique email address.</div>
+</div>
+<div class="field" id="fieldDept">
+<label for="empDept">Department</label>
+<select id="empDept">
+<option value="">Select department</option>
+<option>Engineering</option>
+<option>Cybersecurity</option>
+<option>Design</option>
+<option>Marketing</option>
+<option>Sales</option>
+<option>Human Resources</option>
+<option>Finance</option>
+<option>Operations</option>
+<option>Support</option>
+</select>
+<div class="err">Please select a department.</div>
+</div>
+<div class="field" id="fieldPosition">
+<label for="empPosition">Position <span style="color:var(--text-low)">(optional)</span></label>
+<input type="text" id="empPosition" placeholder="e.g. Security Analyst" autocomplete="off">
+</div>
+<div class="field" id="fieldJoin">
+<label for="empJoin">Join Date</label>
+<input type="date" id="empJoin">
+</div>
+</form>
+</div>
+<div class="modal-foot">
+<button class="btn btn-ghost" id="btnCancel">Abort</button>
+<button class="btn btn-primary" id="btnSubmit">Execute</button>
+</div>
+</div>
+</div>
+<!-- this function belong to delete employee and confirmation -->
+<div class="modal-overlay" id="confirmOverlay">
+<div class="modal confirm-box">
+<div class="modal-titlebar">
+<span style="color:var(--red)">CONFIRM_DELETE.SYS</span>
+<button class="modal-close" id="confirmClose">&#10005;</button>
+</div>
+<div class="modal-body">
+<p>You are about to permanently remove this record from the database.</p>
+<p><span class="warn">This action cannot be undone.</span></p>
+</div>
+<div class="modal-foot">
+<button class="btn btn-ghost" id="confirmCancel">Cancel</button>
+<button class="btn btn-danger" id="confirmOk">Delete Record</button>
+</div>
+</div>
+</div>
+<div class="toast-stack" id="toastStack"></div>
+<script src="utils.js"></script>
+<script src="dataManager.js"></script>
+<script src="validator.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
